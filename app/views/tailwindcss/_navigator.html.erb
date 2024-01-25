@@ -3,35 +3,40 @@
     <div class="flex min-h-[40px] w-full items-center justify-center bg-[rgba(255,255,255,0.85)] py-[11px] px-[20px]">
       <div class="flex w-full max-w-[1080px] items-center justify-between px-[20px]">
         <div class="flex max-w-[260px] items-center justify-start">
-          <a href ="/">
-          <img src="https://d38emex6h5e12i.cloudfront.net/web/ab-test/landing-home/ringle-logo.svg" alt="ringle-logo">
+          <a href="/">
+            <img src="https://d38emex6h5e12i.cloudfront.net/web/ab-test/landing-home/ringle-logo.svg" alt="ringle-logo">
           </a>
         </div>
         <div class="flex items-start space-x-[32px]">
-          
-        <a href="/articles" class="text-14 font-medium leading-[160%]" style="color: rgb(124, 127, 148);">Articles</a>
-        <a href="/schedules" class="text-14 font-medium leading-[160%]" style="color: rgb(124, 127, 148);">Schedule</a>
-      </div>
+
+          <a href="/articles" class="text-14 font-medium leading-[160%]" style="color: rgb(124, 127, 148);">Articles</a>
+          <a href="/schedules" class="text-14 font-medium leading-[160%]"
+            style="color: rgb(124, 127, 148);">Schedule</a>
+        </div>
 
 
         <div class="flex items-center justify-end space-x-12 pr-16">
           <% if user_signed_in? %>
-          <div  class = "text-14 min-w-[80px] rounded-[5px] border border-[#4130A4] bg-white py-2 text-center font-medium leading-[160%] text-[#4130A4] p-2">
-          <%=current_user.email %>
-          </div>
-          <div  class = "text-14 min-w-[80px] rounded-[5px] bg-[#4130A4] py-2 text-center font-medium leading-[160%] text-white p-2">
-          <%= link_to "Log out", destroy_user_session_path, data: { "turbo-method": :delete } %>
-          </div>
-        <%else%>
+            <div
+              class="text-14 min-w-[80px] rounded-[5px] border border-[#4130A4] bg-white py-2 text-center font-medium leading-[160%] text-[#4130A4] p-2">
+              <%=current_user.email %>
+            </div>
+            <div
+              class="text-14 min-w-[80px] rounded-[5px] bg-[#4130A4] py-2 text-center font-medium leading-[160%] text-white p-2">
+              <%= link_to "Log out" , destroy_user_session_path, data: { "turbo-method" : :delete } %>
+            </div>
+            <%else%>
 
-          <button class="text-14 min-w-[80px] rounded-[5px] border border-[#4130A4] bg-white py-2 text-center font-medium leading-[160%] text-[#4130A4]">
-          <%= link_to '로그인', new_user_session_path %>
-          </button>
-          <button class="text-14 min-w-[80px] rounded-[5px] bg-[#4130A4] py-2 text-center font-medium leading-[160%] text-white">
-          <%= link_to '회원가입', new_user_registration_path %>
-          
-          </button>
-          <%end%>
+              <button
+                class="text-14 min-w-[80px] rounded-[5px] border border-[#4130A4] bg-white py-2 text-center font-medium leading-[160%] text-[#4130A4]">
+                <%= link_to '로그인' , new_user_session_path %>
+              </button>
+              <button
+                class="text-14 min-w-[80px] rounded-[5px] bg-[#4130A4] py-2 text-center font-medium leading-[160%] text-white">
+                <%= link_to '회원가입' , new_user_registration_path %>
+
+              </button>
+              <%end%>
         </div>
 
       </div>

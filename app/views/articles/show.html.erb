@@ -1,24 +1,32 @@
-
 <!--<div class = "d-flex align-items-center justify-content-center"    주석처리> -->
 
 
 <body>
-<h1><%= @article.title %></h1>
+  <h1>
+    <%= @article.title %>
+  </h1>
 
-<p><%= @article.body %></p>
+  <p>
+    <%= @article.body %>
+  </p>
 
-<p><%= @article.writer %></p>
-<p><%= @article.views %></p>
+  <p>
+    <%= @article.writer %>
+  </p>
+  <p>
+    <%= @article.views %>
+  </p>
 
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+  <ul>
+    <li>
+      <%= link_to "Edit" , edit_article_path(@article) %>
+    </li>
+    <li>
+      <%= link_to "Destroy" , article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    </li>
+  </ul>
 
-<div>
-<%= link_to "Home", "/" %>
+  <div>
+    <%= link_to "Home" , "/" %>
   </div>
 </body>
