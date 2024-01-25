@@ -5,6 +5,12 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    increment_views_counter if current_user.email != @article.writer
+  end
+
+
+  def increment_views_counter
+    @article.increment!(:views)
   end
 
   def new
@@ -13,6 +19,12 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.views = 0
+    if current_user
+      @article.writer = current_user.email
+    else
+      @article.writer = "anonymous"
+    end
 
     if @article.save
       redirect_to @article
@@ -26,6 +38,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
@@ -38,12 +51,13 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-
-    redirect_to root_path, status: :see_other
+    redirect_to articles_path, status: :see_other
   end
 
   private
     def article_params
       params.require(:article).permit(:title, :body)
     end
+
+
 end
