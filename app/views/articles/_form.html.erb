@@ -1,27 +1,27 @@
 <%= form_with model: article do |form| %>
-  <div>
-    <%= form.label :title %><br>
-      <%= form.text_field :title %>
-        <% article.errors.full_messages_for(:title).each do |message| %>
-          <div>
-            <%= message %>
-          </div>
-          <% end %>
+  <div class="max-w-xl mx-auto">
+    <div class="mb-4">
+      <%= form.label :title, class: "text-xl" %><br>
+      <%= form.text_field :title, class: "w-full border rounded-md p-2" %>
+      <% article.errors.full_messages_for(:title).each do |message| %>
+        <div class="text-red-500">
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :body, class: "text-xl" %><br>
+      <%= form.text_area :body, class: "w-full h-40 border rounded-md p-2" %><br>
+      <% article.errors.full_messages_for(:body).each do |message| %>
+        <div class="text-red-500">
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.submit class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :body %><br>
-
-      <%= form.text_area :body %><br>
-        <% article.errors.full_messages_for(:body).each do |message| %>
-          <div>
-            <%= message %>
-          </div>
-          <% end %>
-  </div>
-
-
-  <div>
-    <%= form.submit %>
-  </div>
-  <% end %>
+<% end %>

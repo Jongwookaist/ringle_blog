@@ -37,22 +37,30 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def update
-    
-    @article = Article.find(params[:id])
+def update
+  @article = Article.find(params[:id])
 
+  if @article.writer == current_user.email
     if @article.update(article_params)
       redirect_to @article
     else
       render :edit, status: :unprocessable_entity
     end
+  else
+    redirect_to root_path, alert: "You are not authorized to edit this article."
   end
+end
 
-  def destroy
-    @article = Article.find(params[:id])
+def destroy
+  @article = Article.find(params[:id])
+
+  if @article.writer == current_user.email
     @article.destroy
     redirect_to articles_path, status: :see_other
+  else
+    redirect_to root_path, alert: "You are not authorized to delete this article."
   end
+end
 
   private
     def article_params

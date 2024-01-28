@@ -2,21 +2,33 @@
 
 
 <body>
-  <h1>
+  <h1 class="mt-2 mb-3 text-4xl">
     <%= @article.title %>
   </h1>
 
-  <p>
+
+  <div class="border-b-2 mb-3" >
+    <p class="">
+    <%= @article.writer %>
+    </p>
+    <div class="flex ">
+      <p class="flex mr-3">
+        <%= @article.updated_at.strftime('%Y.%m.%d') %>
+      </p>
+      <p class="">
+        조회
+        <%= @article.views %>
+      </p>
+
+    </div>
+  </div>
+
+  <p class="mb-3">
     <%= @article.body %>
   </p>
 
-  <p>
-    <%= @article.writer %>
-  </p>
-  <p>
-    <%= @article.views %>
-  </p>
 
+  <% if current_user.email == @article.writer %>
   <ul>
     <li>
       <%= link_to "Edit" , edit_article_path(@article) %>
@@ -25,8 +37,11 @@
       <%= link_to "Destroy" , article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
     </li>
   </ul>
+  <%end%>
+
+
 
   <div>
-    <%= link_to "Home" , "/" %>
+    <%= link_to "목록으로" , "/articles" %>
   </div>
 </body>
