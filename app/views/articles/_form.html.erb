@@ -12,13 +12,20 @@
 
     <div class="mb-4">
       <%= form.label :body, class: "text-xl" %><br>
-      <%= form.text_area :body, class: "w-full h-40 border rounded-md p-2" %><br>
+      <%= form.rich_text_area :body, class: "w-full h-40 border rounded-md p-2" %><br>
       <% article.errors.full_messages_for(:body).each do |message| %>
         <div class="text-red-500">
           <%= message %>
         </div>
       <% end %>
     </div>
+
+<div>
+<%= form.label :iamge%>
+<%= form.file_field :image%>
+</div>
+
+
 
     <div>
       <%= form.submit class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>

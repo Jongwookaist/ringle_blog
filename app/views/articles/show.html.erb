@@ -27,6 +27,8 @@
     <%= @article.body %>
   </p>
 
+<div> <%=image_tag(@article.image)%></div>
+
 
   <% if current_user.email == @article.writer %>
   <ul>
@@ -41,7 +43,9 @@
 
 
 
-  <div>
+
+
+  <div class = "mb-24">
     <%= link_to "목록으로" , "/articles" %>
   </div>
 </body>
